@@ -1,0 +1,10 @@
+<h1>Hourly Weather</h1>
+<ul>
+    {% for hour in hourly_data%}
+        <li>Time: {{ hour.0 }}</li>
+        <li>Temperature: {{ hour.1 }}</li>
+        <li>Humidity: {{ hour.2 }}</li>
+        <li>Wind Speed: {{ hour.3 }}</li>
+        <br>
+    {% endfor %}
+</ul>
