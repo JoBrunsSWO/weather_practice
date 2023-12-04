@@ -1,3 +1,4 @@
+
 # Weather Information
 
 This is a partial implementation of a web app that should display weather information from a weather api. The backend of the app is powered by Django while the frontend is powered by Vue Js.
@@ -18,7 +19,6 @@ Tasks requested:
 - Write suitable unit tests for the `convert_date` function. Please use the python's unittest framework.
 - Document the necessary steps/setup to run the application under the "Setup Instructions" header at the end of this file.
 
-
 If you do not have enough information, make any assumptions you would like and note them down with comments in the section below. Feel free to make comments that highlight completion of the tasks listed above.
 
 Please budget 3 hours to complete, and your code should be production ready, clean and tested! Please ensure the code is version controlled also, and make sure to make several commits with sensile commit messages while working on this. When submitting please either:
@@ -26,42 +26,51 @@ Please budget 3 hours to complete, and your code should be production ready, cle
 
 ## My Assumptions
 
-- Document the necessary steps/setup to run the application under the "Setup Instructions" header at the end of this file.
-- Display the weather information in the frontend. The design and "feel" is entirely up to you.
-- Finish implementing the code for the app.
-- Implement the `convert_date` function in `utils.py` to convert any dates from api data to the format `DD-MM-YYYY` before displaying in the frontend.
-- Write suitable unit tests for the `convert_date` function. Please use the python's unittest framework.
-
-
-
 ## My Tasks & Explanations
 1. Initialized a git repo in the root folder
 2. Made the project setup:
-- I created a virtual environment called venv, activated it, and then installed the packages django, djangorestframework  With pip freeze > requirements.txt
-- I got the django app running with django-admin startproject
-@Todo: do we need gitignore for requirements.txt and venv?
-@Todo How to install vue? Should be possible to just install vue packages with npm install ..., then it should save everything in a tsconfig file? so it's reproducible by npm install
-@Todo Get the app running with startproject?
+    - I created a virtual environment called venv, activated it, and then installed django with python -m pip install Django
+    - Stored the requirements in requirements.txt with pip freeze > requirements.txt
+    - I got the django app running with django-admin startproject
+    - I created a .gitignore file and added the venv/ folder
 
-Todos:
-- Create Views: Create Django views that will handle the logic to fetch data from the external API. You can use Django Rest Framework's APIView or ViewSet for this purpose.
+### Todos
+- Create basic view of the data with django
+	- Create Views: fetch data from the external API
+	- Create templates to display data
+	- Configure URLs
 
-- Create Serializers: If you need to transform the data before sending it to the frontend, create serializers using Django Rest Framework.
+- Django Rest Framework
+	- Install & include in project setup
+	- refactor views, use Django Rest Framework's APIView
+	- Create Serializers to transform the data before sending to frontend
 
-- Configure URLs: Connect your views to URLs in your Django project's urls.py file.
+- convert_date function
+	- Implement the `convert_date` function in `utils.py` to convert any dates from api data to the format `DD-MM-YYYY` before displaying in the frontend.
+	- Write suitable unit tests for the `convert_date` function. Please use the python's unittest framework.
 
-- Configure Vue Frontend: Make sure your Vue frontend is set up to make requests to your Django backend. You might need to configure CORS (Cross-Origin Resource Sharing) if your frontend is on a different domain.
+- Vue Frontend
+	- install vue & include in project setup
+	- create better look and feel
 
-- Testing: Test your views and API endpoints to ensure that data is being fetched and sent to the frontend correctly.
+## Setup Instructions 
+1. Create and activate a virtual environment
+After cloning the project into your root folder for the project, open a terminal in this root folder create a virtual environment and activate it.
+```
+python -m venv .\venv
+venv/scripts/activate
+```
 
-## Setup Instructions
-
-1. First, recreate the virtual environment. Go to terminal to root folder and type the following command:
-python3 -m venv .\venv
-This will create a virtual environment called venv in the folder 
-2. Activate the virtual environment with the following command:
-venv\scripts\activate
-3. Install the required packages from requirements.txt:
+2. Install the required packages from requirements.txt:
+```
 pip install -r requirements.txt
-@Todo research what this does
-4. (Should be possible to just install vue packages with npm install ..., then it should save everything in a tsconfig file? so it's reproducible by npm install)
+```
+
+3. Start the project on the development server:
+```
+python manage.py runserver
+```
+  
+### Still lacking in Setup
+- Django Rest Framework
+- Vue
