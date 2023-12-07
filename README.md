@@ -29,6 +29,7 @@ Please budget 3 hours to complete, and your code should be production ready, cle
 - I assume that we only want to display weather data from the external API Endpoint, so we only deal with get requests here and don't want to provide options for post, put, or delete calls
 - I assume that we only want to display the weather of one place, so we don't need to alter the longitude and latitude values in the request.
 - I assume that there is no Authentication Functionality and no superuser needed, and we only want to display data to any unauthenticated user who accesses the site.
+- I want to display daily data instead of hourly data, and get weather codes from the endpoint. I assume it is ok to alter the OpenMeteo-Endpoint for that purpose.
 - After adding django rest framework and refactoring the project to use it, I noticed that the folder structure differs slightly from the sample repo. I assume this is ok unless I stumble into issues.
 
 ## My Tasks & Explanations
@@ -50,6 +51,7 @@ Please budget 3 hours to complete, and your code should be production ready, cle
 	- created a model, a serializer and an APIView for WeatherData
 5. Created vue frontend
 	- installed cors headers and included it in the list of installed apps
+	- altered the OpenMeteo Endpoint and the corresponding data model
 
 
 ### Todos
@@ -69,12 +71,12 @@ Please budget 3 hours to complete, and your code should be production ready, cle
 [] Frontend
 	[x] learn enough vue to implement a basic frontend
 	
-	[] Install cors headers
-	[] Find out how to allow cors for specific resources only
-	[] Create middleware and add
+	[x] Install cors headers
+	[x] Find out how to allow cors for specific resources only
+	[x] Add cors settings, cors installed app and middleware
 
-	[] install vue & include in project setup
-	[] create vue app
+	[x] install vue & include in project setup
+	[x] create vue app
 	[] Decide what data should be displayed and how they should be modified before passing them to the frontend
 	[] Modify the api endpoint: weather codes, daily weather
 	display the necessary data of current weather
@@ -119,12 +121,24 @@ cd weather_app
 python manage.py migrate
 ```
 
-6. Start the project on the development server
+6. Start the backend on the development server
 ```
 python manage.py runserver
 ```
 	The Api View will can be accessed on http://127.0.0.1:8000/api/weather
-  
+
+7. Go to the client folder and install the packages for the frontend
+```
+cd ../client/weather_client
+npm install
+```
+8. Start the frontend client
+```
+npm run serve
+```
+	The Frontend client will can be accessed on http://127.0.0.1:8080/
+
+
 ### Still lacking in Setup
 - Vue
 - Do I need a superuser?
