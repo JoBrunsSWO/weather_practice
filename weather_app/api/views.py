@@ -17,19 +17,21 @@ class WeatherView(APIView):
         serializer = WeatherDataSerializer(data={
             'latitude': data['latitude'],
             'longitude': data['longitude'],
-            'generationtime_ms': data['generationtime_ms'],
             'utc_offset_seconds': data['utc_offset_seconds'],
             'timezone': data['timezone'],
             'timezone_abbreviation': data['timezone_abbreviation'],
-            'elevation': data['elevation'],
             'current_time': data['current']['time'],
-            'current_interval': data['current']['interval'],
             'current_temperature_2m': data['current']['temperature_2m'],
+            'current_humidity_2m': data['current']['relative_humidity_2m'],
+            'current_weather_code': data['current']['weather_code'],
             'current_wind_speed_10m': data['current']['wind_speed_10m'],
-            'hourly_time': data['hourly']['time'],
-            'hourly_temperature_2m': data['hourly']['temperature_2m'],
-            'hourly_relative_humidity_2m': data['hourly']['relative_humidity_2m'],
-            'hourly_wind_speed_10m': data['hourly']['wind_speed_10m'],
+            'daily_time': data['daily']['time'],
+            'daily_weather_code': data['daily']['weather_code'],
+            'daily_temperature_2m_max': data['daily']['temperature_2m_max'],
+            'daily_temperature_2m_min': data['daily']['temperature_2m_min'],
+            'daily_precipitation_sum': data['daily']['precipitation_sum'],
+            'daily_precipitation_probability': data['daily']['precipitation_probability_max'],
+            'daily_wind_speed_10m_max': data['daily']['wind_speed_10m_max']
         })
         # Check if the serializer is valid, then save and return the data
         if serializer.is_valid():

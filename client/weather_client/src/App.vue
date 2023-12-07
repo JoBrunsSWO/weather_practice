@@ -1,5 +1,5 @@
 <template>
-  <WeatherInformation msg="Welcome to Your Vue.js App"/>
+  <WeatherInformation />
 </template>
 
 <script>

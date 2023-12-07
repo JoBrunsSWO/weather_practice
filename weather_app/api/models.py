@@ -7,23 +7,25 @@ class WeatherData(models.Model):
     # Metadata. These fields are the same as the API Endpoint
     latitude = models.FloatField(default=0)
     longitude = models.FloatField(default=0)
-    generationtime_ms = models.FloatField(default=0)
     utc_offset_seconds = models.IntegerField(default=0)
     timezone = models.CharField(max_length=50, default="GMT")
     timezone_abbreviation = models.CharField(max_length=10, default="GMT")
-    elevation = models.IntegerField(default=0)
 
     # Current weather data. In the API Endpoint, they are nested under the "current" key
     current_time = models.DateTimeField(default=django_timezone.now)
-    current_interval = models.IntegerField(default=0)
     current_temperature_2m = models.FloatField(default=0)
+    current_humidity_2m = models.FloatField(default=0)
+    current_weather_code = models.IntegerField(default=0)
     current_wind_speed_10m = models.FloatField(default=0)
 
     # Hourly weather data. In the API Endpoint, they are nested under the "hourly" key
-    hourly_time = models.JSONField(default=list)
-    hourly_temperature_2m = models.JSONField(default=list)
-    hourly_relative_humidity_2m = models.JSONField(default=list)
-    hourly_wind_speed_10m = models.JSONField(default=list)
+    daily_time = models.JSONField(default=list)
+    daily_weather_code = models.JSONField(default=list)
+    daily_temperature_2m_max = models.JSONField(default=list)
+    daily_temperature_2m_min = models.JSONField(default=list)
+    daily_precipitation_sum = models.JSONField(default=list)
+    daily_precipitation_probability = models.JSONField(default=list)
+    daily_wind_speed_10m_max = models.JSONField(default=list)
 
     # String representation of the model
     def __str__(self):

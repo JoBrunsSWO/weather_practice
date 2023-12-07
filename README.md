@@ -77,9 +77,12 @@ Please budget 3 hours to complete, and your code should be production ready, cle
 
 	[x] install vue & include in project setup
 	[x] create vue app
-	[] Decide what data should be displayed and how they should be modified before passing them to the frontend
-	[] Modify the api endpoint: weather codes, daily weather
-	display the necessary data of current weather
+	[x] Decide what data should be displayed and how they should be modified before passing them to the frontend
+	[x] Modify the api endpoint: weather codes, daily weather
+	[x] display the necessary data of current weather
+	[x] display data of the next 7 days
+	[] find and use icons
+	[] use grid layout for week containers
 
 	[] Documentation
 	
