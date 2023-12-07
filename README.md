@@ -25,6 +25,11 @@ Please budget 3 hours to complete, and your code should be production ready, cle
 - Provide a Github/GitLab/etc. link that we can view and clone your work
 
 ## My Assumptions
+- I assume that the snippets provided in the sample repo are best practice enough for the project so I don't have to dive deeper into the possibilities of django and django rest framework (like mixins, generic class-based Views, hyperlinking...).
+- I assume that we only want to display weather data from the external API Endpoint, so we only deal with get requests here and don't want to provide options for post, put, or delete calls
+- I assume that we only want to display the weather of one place, so we don't need to alter the longitude and latitude values in the request.
+- I assume that there is no Authentication Functionality and no superuser needed, and we only want to display data to any unauthenticated user who accesses the site.
+- After adding django rest framework and refactoring the project to use it, I noticed that the folder structure differs slightly from the sample repo. I assume this is ok unless I stumble into issues.
 
 ## My Tasks & Explanations
 1. Initialized a git repo in the root folder
@@ -33,44 +38,93 @@ Please budget 3 hours to complete, and your code should be production ready, cle
     - Stored the requirements in requirements.txt with pip freeze > requirements.txt
     - I got the django app running with django-admin startproject
     - I created a .gitignore file and added the venv/ folder
+3. Created the api in django without rest framework
+	- in weather_practice/weather_app, I created the api app:
+	```
+	python manage.py startapp api
+	```
+	- I registered the api app in settings.py INSTALLED_APPS array and included the path to api app in weather_app/urls.py
+	- in the api app, I created 2 URLS for current and hourly weather, views to make the requests and modify the data, and created corresponding templates and an error template
+4. refactored the api with django rest framework
+	- installed djangorestframework and updated requirements.txt to reflect the current environment
+	- created a model, a serializer and an APIView for WeatherData
+5. Created vue frontend
+	- installed cors headers and included it in the list of installed apps
+
 
 ### Todos
-- Create basic view of the data with django
-	- Create Views: fetch data from the external API
-	- Create templates to display data
-	- Configure URLs
+[x] Create basic view of the data with django
+	[x] Create Views: fetch data from the external API
+	[x] Create templates to display data
+	[x] Configure URLs
 
-- Django Rest Framework
-	- Install & include in project setup
-	- refactor views, use Django Rest Framework's APIView
-	- Create Serializers to transform the data before sending to frontend
+[x] Django Rest Framework
+	[x] Install & include in project setup
+	[x] look up what should be refactored
+	[x] Create Serializers to transform the data before sending to frontend
+	[x] refactor views, use Django Rest Framework's APIView
 
-- convert_date function
-	- Implement the `convert_date` function in `utils.py` to convert any dates from api data to the format `DD-MM-YYYY` before displaying in the frontend.
-	- Write suitable unit tests for the `convert_date` function. Please use the python's unittest framework.
+[x] Documentation
 
-- Vue Frontend
-	- install vue & include in project setup
-	- create better look and feel
+[] Frontend
+	[x] learn enough vue to implement a basic frontend
+	
+	[] Install cors headers
+	[] Find out how to allow cors for specific resources only
+	[] Create middleware and add
+
+	[] install vue & include in project setup
+	[] create vue app
+	[] Decide what data should be displayed and how they should be modified before passing them to the frontend
+	[] Modify the api endpoint: weather codes, daily weather
+	display the necessary data of current weather
+
+	[] Documentation
+	
+
+[] convert_date function
+	[] check if django datetime or timezone modules should be used
+	[] Implement the `convert_date` function in `utils.py` to convert any dates from api data to the format `DD-MM-YYYY` before displaying in the frontend.
+	[] Dive into unit testing a bit
+	[] Write suitable unit tests for the `convert_date` function. Please use the python's unittest framework.
+
+[] Evaluate: do we want to have the option to submit our own lon and lat data and make the requests based on that? Then look at the tutorial again, fix the conditional rendering of the templates (always reset to false if anything changes), alter the api-endpoint addresses
 
 ## Setup Instructions 
-1. Create and activate a virtual environment
-After cloning the project into your root folder for the project, open a terminal in this root folder create a virtual environment and activate it.
+1. Prerequisites
+	You should have the following installed:
+	- Python (we are using Python 3.12)
+	- pip (package manager for python)
+
+2. Clone the repository
 ```
-python -m venv .\venv
+git clone <repository path>
+cd <your clone repository>
+
+3. Create and activate a virtual environment
+	Create a virtual environment and activate it.
+```
+python -m venv venv
 venv/scripts/activate
 ```
 
-2. Install the required packages from requirements.txt:
+4. Install the required packages from requirements.txt
 ```
 pip install -r requirements.txt
 ```
+5. Set up the database
+	Apply the migrations. Make sure you are in the folder where the manage.py file is located, normally the first level weather_app folder:
+```
+cd weather_app
+python manage.py migrate
+```
 
-3. Start the project on the development server:
+6. Start the project on the development server
 ```
 python manage.py runserver
 ```
+	The Api View will can be accessed on http://127.0.0.1:8000/api/weather
   
 ### Still lacking in Setup
-- Django Rest Framework
 - Vue
+- Do I need a superuser?

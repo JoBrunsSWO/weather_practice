@@ -1,1 +1,4 @@
 venv/
+*.sqlite3
+weather_app/api/__pycache__/
+.vscode/
