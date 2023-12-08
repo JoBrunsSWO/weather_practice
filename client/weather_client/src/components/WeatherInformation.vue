@@ -80,6 +80,7 @@ export default {
   
   data() {
     return {
+        // initialize all variables
       time: '',
 
       currentTemperature: '',
@@ -101,6 +102,7 @@ export default {
   },
   methods: {
     assignDescription(code) {
+        // assign description to every possible weather code
         switch(code) {
             case 0:
                 return 'Clear';
@@ -143,7 +145,8 @@ export default {
   async created() {
     axios.get('http://localhost:8000/api/weather/').then(
                 response => {
-                    this.currentDescription = this.assignDescription(response.data.current_weather_code);
+                    // assign response data to variables
+                    this.currentDescription = this.assignDescription(response.data.current_weather_code); // assign description to current weather code
                     this.time = response.data.current_time;
                     this.currentTemperature = response.data.current_temperature_2m;
                     this.currentHumidity = response.data.current_humidity_2m;
@@ -157,6 +160,7 @@ export default {
                     this.dailyWindSpeed = response.data.daily_wind_speed_10m_max;
                     console.log(this.dailyWeatherCode)
                     for (let i = 0; i < this.dailyWeatherCode.length; i++) {
+                        // assign description to the daily weather codes
                         this.dailyDescription.push(this.assignDescription(this.dailyWeatherCode[i]));
                     }      
                 }).catch(error => {

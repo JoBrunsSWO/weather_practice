@@ -7,9 +7,10 @@ from rest_framework import status
 from .serializers import WeatherDataSerializer
 from weather_app.settings import WEATHER_API_ENDPOINT
 
+
 class WeatherView(APIView):
     def get(self, request):
-        # Make a request to the API Endpoint with a timeout argument so pylint won't hate me
+        # Make a request to the API Endpoint, include a timeout argument so pylint won't shout at me
         response = requests.get(WEATHER_API_ENDPOINT, timeout=2.50)
         # Convert the response to Json
         data = response.json()

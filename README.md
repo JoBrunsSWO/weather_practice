@@ -52,6 +52,10 @@ Please budget 3 hours to complete, and your code should be production ready, cle
 5. Created vue frontend
 	- installed cors headers and included it in the list of installed apps
 	- altered the OpenMeteo Endpoint and the corresponding data model
+	- installed axios to handle the get request
+	- created a basic frontend to display all necessary data
+6. Convert date
+	- wrote convert_date function, checking for the 2 possible date formats we get and altered the serializer to use convert_date with to_representation method
 
 
 ### Todos
@@ -76,6 +80,7 @@ Please budget 3 hours to complete, and your code should be production ready, cle
 	[x] Add cors settings, cors installed app and middleware
 
 	[x] install vue & include in project setup
+	[x] install axios
 	[x] create vue app
 	[x] Decide what data should be displayed and how they should be modified before passing them to the frontend
 	[x] Modify the api endpoint: weather codes, daily weather
@@ -87,49 +92,52 @@ Please budget 3 hours to complete, and your code should be production ready, cle
 	[] Documentation
 	
 
-[] convert_date function
-	[] check if django datetime or timezone modules should be used
-	[] Implement the `convert_date` function in `utils.py` to convert any dates from api data to the format `DD-MM-YYYY` before displaying in the frontend.
-	[] Dive into unit testing a bit
-	[] Write suitable unit tests for the `convert_date` function. Please use the python's unittest framework.
+[x] convert_date function
+	[x] check if django datetime or timezone modules should be used
+	[x] write the `convert_date` function in `utils.py` to convert any dates from api data to the desired format
+	[x] implement convert_date to be used in current time and daily dates
+	[x] Dive into unit testing a bit
+	[x] Write suitable unit tests for the `convert_date` function. Please use the python's unittest framework.
+		[x] Convert with time
+		[x] Convert with day
+		[x] error handling for wrong format
+		[x] edge cases like highest or lowest date
+		[x] handling wrong type arguments like None, int
 
-[] Evaluate: do we want to have the option to submit our own lon and lat data and make the requests based on that? Then look at the tutorial again, fix the conditional rendering of the templates (always reset to false if anything changes), alter the api-endpoint addresses
+[x] Evaluate: do we want to have the option to submit our own lon and lat data and make the requests based on that? Then look at the tutorial again, fix the conditional rendering of the templates (always reset to false if anything changes), alter the api-endpoint addresses -> No
 
 ## Setup Instructions 
 1. Prerequisites
 	You should have the following installed:
-	- Python (we are using Python 3.12)
-	- pip (package manager for python)
-
+	- Node.js (we are using version 20.3.1)
+	- Python (we are using version 3.12)
+	- pip (package manager for python, we are using version 23.2.1)
 2. Clone the repository
 ```
 git clone <repository path>
 cd <your clone repository>
-
+```
 3. Create and activate a virtual environment
 	Create a virtual environment and activate it.
 ```
 python -m venv venv
 venv/scripts/activate
 ```
-
-4. Install the required packages from requirements.txt
+4. From root folder, change to weather_app folder and install the required packages from requirements.txt
 ```
+cd weather_app
 pip install -r requirements.txt
 ```
 5. Set up the database
 	Apply the migrations. Make sure you are in the folder where the manage.py file is located, normally the first level weather_app folder:
 ```
-cd weather_app
 python manage.py migrate
 ```
-
 6. Start the backend on the development server
 ```
 python manage.py runserver
 ```
 	The Api View will can be accessed on http://127.0.0.1:8000/api/weather
-
 7. Go to the client folder and install the packages for the frontend
 ```
 cd ../client/weather_client
@@ -141,7 +149,3 @@ npm run serve
 ```
 	The Frontend client will can be accessed on http://127.0.0.1:8080/
 
-
-### Still lacking in Setup
-- Vue
-- Do I need a superuser?
