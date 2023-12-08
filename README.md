@@ -1,6 +1,6 @@
-
 # Weather Information
 
+## Task
 This is a partial implementation of a web app that should display weather information from a weather api. The backend of the app is powered by Django while the frontend is powered by Vue Js.
 
 This implementation comes from a template. You, the Software Engineer, have been requested to refactor this project.
@@ -35,117 +35,118 @@ Please budget 3 hours to complete, and your code should be production ready, cle
 ## My Tasks & Explanations
 1. Initialized a git repo in the root folder
 2. Made the project setup:
-    - I created a virtual environment called venv, activated it, and then installed django with python -m pip install Django
-    - Stored the requirements in requirements.txt with pip freeze > requirements.txt
-    - I got the django app running with django-admin startproject
-    - I created a .gitignore file and added the venv/ folder
+- I created a virtual environment called venv, activated it, and then installed django with python -m pip install Django
+- Stored the requirements in requirements.txt with pip freeze > requirements.txt
+- I got the django app running with django-admin startproject
+- I created a .gitignore file and added the venv/ folder
 3. Created the api in django without rest framework
-	- in weather_practice/weather_app, I created the api app:
-	```
-	python manage.py startapp api
-	```
-	- I registered the api app in settings.py INSTALLED_APPS array and included the path to api app in weather_app/urls.py
-	- in the api app, I created 2 URLS for current and hourly weather, views to make the requests and modify the data, and created corresponding templates and an error template
+- in weather_practice/weather_app, I created the api app:
+```
+python manage.py startapp api
+```
+- I registered the api app in settings.py INSTALLED_APPS array and included the path to api app in weather_app/urls.py
+- in the api app, I created 2 URLS for current and hourly weather, views to make the requests and modify the data, and created corresponding templates and an error template
 4. refactored the api with django rest framework
-	- installed djangorestframework and updated requirements.txt to reflect the current environment
-	- created a model, a serializer and an APIView for WeatherData
+- installed djangorestframework and updated requirements.txt to reflect the current environment
+- created a model, a serializer and an APIView for WeatherData
 5. Created vue frontend
-	- installed cors headers and included it in the list of installed apps
-	- altered the OpenMeteo Endpoint and the corresponding data model
-	- installed axios to handle the get request
-	- created a basic frontend to display all necessary data
+- installed cors headers and included it in the list of installed apps
+- altered the OpenMeteo Endpoint and the corresponding data model
+- installed axios to handle the get request
+- created a basic frontend to display all necessary data
 6. Convert date
-	- wrote convert_date function, checking for the 2 possible date formats we get and altered the serializer to use convert_date with to_representation method
-
+- wrote convert_date function, checking for the 2 possible date formats we get and altered the serializer to use convert_date with to_representation method
+- Wrote tests with unittests module, they work
+- Notice: weirdly, in the frontend the time only updates every 15 minutes. Since my time was up, I couldn't investigate that anymore.
 
 ### Todos
-[x] Create basic view of the data with django
-	[x] Create Views: fetch data from the external API
-	[x] Create templates to display data
-	[x] Configure URLs
+- [x] Create basic view of the data with django
+	- [x] Create Views: fetch data from the external API
+	- [x] Create templates to display data
+	- [x] Configure URLs
 
-[x] Django Rest Framework
-	[x] Install & include in project setup
-	[x] look up what should be refactored
-	[x] Create Serializers to transform the data before sending to frontend
-	[x] refactor views, use Django Rest Framework's APIView
+- [x] Django Rest Framework
+	- [x] Install & include in project setup
+	- [x] look up what should be refactored
+	- [x] Create Serializers to transform the data before sending to frontend
+	- [x] refactor views, use Django Rest Framework's APIView
 
-[x] Documentation
+- [x] Documentation
 
-[x] Frontend
-	[x] learn enough vue to implement a basic frontend
-	
-	[x] Install cors headers
-	[x] Find out how to allow cors for specific resources only
-	[x] Add cors settings, cors installed app and middleware
-
-	[x] install vue & include in project setup
-	[x] install axios
-	[x] create vue app
-	[x] Decide what data should be displayed and how they should be modified before passing them to the frontend
-	[x] Modify the api endpoint: weather codes, daily weather
-	[x] display the necessary data of current weather
-	[x] display data of the next 7 days
-	[x] find and use icons
-	[x] use grid layout for day containers -> no, too complicated for now
-
-	[x] Documentation
+- [x] Frontend
+	- [x] learn enough vue to implement a basic frontend
+	- [x] Install cors headers
+	- [x] Find out how to allow cors for specific resources only
+	- [x] Add cors settings, cors installed app and middleware
+	- [x] install vue & include in project setup
+	- [x] install axios
+	- [x] create vue app
+	- [x] Decide what data should be displayed and how they should be modified before passing them to the frontend
+	- [x] Modify the api endpoint: weather codes, daily weather
+	- [x] display the necessary data of current weather
+	- [x] display data of the next 7 days
+	- [x] find and use icons
+	- [x] use grid layout for day containers -> no, too complicated for now
+	- [x] Documentation
 	
 
-[x] convert_date function
-	[x] check if django datetime or timezone modules should be used
-	[x] write the `convert_date` function in `utils.py` to convert any dates from api data to the desired format
-	[x] implement convert_date to be used in current time and daily dates
-	[x] Dive into unit testing a bit
-	[x] Write suitable unit tests for the `convert_date` function. Please use the python's unittest framework.
-		[x] Convert with time
-		[x] Convert with day
-		[x] error handling for wrong format
-		[x] edge cases like highest or lowest date
-		[x] handling wrong type arguments like None, int
+- [x] convert_date function
+	- [x] check if django datetime or timezone modules should be used
+	- [x] write the `convert_date` function in `utils.py` to convert any dates from api data to the desired format
+	- [x] implement convert_date to be used in current time and daily dates
+	- [x] Dive into unit testing a bit
+	- [x] Write suitable unit tests for the `convert_date` function. Please use the python's unittest framework.
+		- [x] Convert with time
+		- [x] Convert with day
+		- [x] error handling for wrong format
+		- [x] edge cases like highest or lowest date
+		- [x] handling wrong type arguments like None, int
 
-[x] Evaluate: do we want to have the option to submit our own lon and lat data and make the requests based on that? Then look at the tutorial again, fix the conditional rendering of the templates (always reset to false if anything changes), alter the api-endpoint addresses -> No
+- [x] Evaluate: do we want to have the option to submit our own lon and lat data and make the requests based on that? Then look at the tutorial again, fix the conditional rendering of the templates (always reset to false if anything changes), alter the api-endpoint addresses -> No
+
+- [x] Test the setup instructions
 
 ## Setup Instructions 
+Notice: All these instructions are written for PowerShell. If you use another terminal, they might differ.
 1. Prerequisites
-	You should have the following installed:
-	- Node.js (we are using version 20.3.1)
-	- Python (we are using version 3.12)
-	- pip (package manager for python, we are using version 23.2.1)
-2. Clone the repository
+You should have the following installed:
+- Node.js (we are using version 20.3.1)
+- Python (we are using version 3.12)
+- pip (package manager for python, we are using version 23.2.1)
+2. Clone the repository. Go to the folder weather_practice/weather_app.
 ```
 git clone <repository path>
-cd <your clone repository>
+cd <your path>/weather_practice/weather_app
 ```
 3. Create and activate a virtual environment
-	Create a virtual environment and activate it.
+Create a virtual environment and activate it.
 ```
 python -m venv venv
 venv/scripts/activate
 ```
 4. From root folder, change to weather_app folder and install the required packages from requirements.txt
 ```
-cd weather_app
 pip install -r requirements.txt
 ```
 5. Set up the database
-	Apply the migrations. Make sure you are in the folder where the manage.py file is located, normally the first level weather_app folder:
+Apply the migrations. Make sure you are in the folder where the manage.py file is located, normally the first level weather_app folder:
 ```
 python manage.py migrate
 ```
+Notice: Since something was wrong with my gitignore file, my db.sqlite3 file wasn't ignored and is already included in the repository. This command should therefore output "No migrations to apply."
 6. Start the backend on the development server
 ```
 python manage.py runserver
 ```
-	The Api View will can be accessed on http://127.0.0.1:8000/api/weather
-7. Go to the client folder and install the packages for the frontend
+The Api View will can be accessed on http://127.0.0.1:8000/api/weather
+7. Open another terminal and go to the client folder and install the packages for the frontend
 ```
-cd ../client/weather_client
+cd <your path>/client/weather_client
 npm install
 ```
 8. Start the frontend client
 ```
 npm run serve
 ```
-	The Frontend client will can be accessed on http://127.0.0.1:8080/
+The Frontend client will can be accessed on http://127.0.0.1:8080/
 
