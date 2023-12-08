@@ -1,15 +1,18 @@
-from django.http import HttpResponse
-from django.shortcuts import render
 import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import WeatherDataSerializer
 from weather_app.settings import WEATHER_API_ENDPOINT
-
+from .serializers import WeatherDataSerializer
 
 class WeatherView(APIView):
+    """
+    View to get weather data from the API Endpoint
+    """
     def get(self, request):
+        """
+        Get weather data from the API Endpoint
+        """
         # Make a request to the API Endpoint, include a timeout argument so pylint won't shout at me
         response = requests.get(WEATHER_API_ENDPOINT, timeout=2.50)
         # Convert the response to Json

@@ -72,7 +72,7 @@ Please budget 3 hours to complete, and your code should be production ready, cle
 
 [x] Documentation
 
-[] Frontend
+[x] Frontend
 	[x] learn enough vue to implement a basic frontend
 	
 	[x] Install cors headers
@@ -86,10 +86,10 @@ Please budget 3 hours to complete, and your code should be production ready, cle
 	[x] Modify the api endpoint: weather codes, daily weather
 	[x] display the necessary data of current weather
 	[x] display data of the next 7 days
-	[] find and use icons
-	[] use grid layout for week containers
+	[x] find and use icons
+	[x] use grid layout for day containers -> no, too complicated for now
 
-	[] Documentation
+	[x] Documentation
 	
 
 [x] convert_date function
